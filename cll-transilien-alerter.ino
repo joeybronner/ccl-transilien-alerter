@@ -3,17 +3,23 @@
 #include <TM1637Display.h> 
 
 /* 
+ *  ------------------------------------------------------
  *  CLL TRANSILIEN ALERTER
- *  This project use the SNCF APIs
- *  An access is needed, if you want to use it, please email at ext.synergie.florian.lainez@sncf.fr
- *  and 
+ *  ------------------------------------------------------
+ *  
+ *  This Arduino project displays the 10 next trains for a 
+ *  particular train station (Clichy/Levallois for example)
+ *  I'm using the SNCF APIs. A specific access is needed, 
+ *  if you want to use it, please email at 
+ *  ext.synergie.florian.lainez@sncf.fr and specify 
+ *  who/company/why in your email.
  *  
  *  --- Board ---
  *  Arduino UNO
  *  Price: ~ 5.00€
  *  
  *  --- 4 Digit Display ---
- *  Croquis > Inclure une bibliothèque > Ajouter la bibliothèque .ZIP > /libs/TM1637.zip
+ *  Add the librarie TM1637 included in this project
  *  Lib : https://github.com/avishorp/TM1637
  *  Price: ~ 1.00€
  *  
@@ -23,14 +29,16 @@
  *  --- LEDs (green & red) ---
  *  Price: ~ 0.10€
  *  
- *  
  *  Total approximate price : ~ 9.10€
  *  
+ *  developer : Joey Bronner
+ *  email     : contact@joeybronner.fr
+ *  when      : 2016-05-12
+ *  ------------------------------------------------------
  */
 
 // 4 Digit Display
-// Set the CLK & DIO pin connection to the display
-// and set up the device
+// Set the CLK & DIO pin connection to the display and set up the device
 const int CLK = 8;
 const int DIO = 9;
 TM1637Display display(CLK, DIO); 
@@ -39,13 +47,14 @@ TM1637Display display(CLK, DIO);
 LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);
 
 // LEDs
-int red = 3;
+int red   = 3;
 int green = 2;
-
 String travelInfos;
 
 /*
- * Setup description
+ * Setup is called when a sketch starts
+ * Used to initialize pin modes, start using libraries
+ * Runs only once! (after each powerup or reset)
  */
 void setup()
 {
@@ -70,7 +79,8 @@ void setup()
 }
  
 /*
- * Loop description
+ * Loop is called consecutively.
+ * Used to change LCD, LED and digital values
  */
 void loop() 
 {
@@ -79,13 +89,12 @@ void loop()
       // ... waiting data from serial port (9600 bauds) ...
     }
     
-    // serial read section
+    // Serial read section
     while (Serial.available()) {
-      delay(30);  // delay to allow buffer to fill 
+      delay(30);  // Delay to allow buffer to fill 
       if (Serial.available() > 0) {
-        char c = Serial.read();   // gets one byte from serial buffer
-        travelInfos += c;         // makes the string readString
-        
+        char c = Serial.read();   // Gets one byte from serial buffer
+        travelInfos += c;         // Rebuilding string
       }
     }
 
@@ -114,12 +123,11 @@ void loop()
       break;
     }
 
-    // Display the minutes remaining for the next departure
+    // Display the minutes remaining for the next departure on digital screen
     int minLeft = minutes.toInt();
     if (minLeft < 0) {
       minLeft = minLeft * (-1);
     }
-    
     display.showNumberDec(minutes.toInt());
 
     // Update LCD departure informations : date & terminal station
@@ -147,7 +155,7 @@ void loop()
  */
 
 /*
- * Method description
+ * This method is used to split a string into an array of substrings
  */
 String split(String data, char separator, int index) {
   int found = 0;
