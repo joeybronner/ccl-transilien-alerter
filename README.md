@@ -9,6 +9,5 @@
 ### TODO
 ...  
 
-### Contributors
-@joeybronner
-@Arn-O for his python skills
+### Thank's
+@Arn-O for his python skills  
