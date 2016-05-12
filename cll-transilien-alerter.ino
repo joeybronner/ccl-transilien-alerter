@@ -15,7 +15,7 @@
  *  who/company/why in your email.
  *  
  *  --- Board ---
- *  Arduino UNO
+ *  Arduino UNO (clone)
  *  Price: ~ 5.00€
  *  
  *  --- 4 Digit Display ---
@@ -66,7 +66,6 @@ void setup()
 
   // Initialize LCD map and print welcome message  
   lcd.begin(16,2);
-  lcd.setBacklight(50);
   lcd.clear();
   lcd.setCursor(0, 0);
   lcd.print("CLICHY/LEVALLOIS");
