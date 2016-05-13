@@ -7,21 +7,21 @@ This Arduino project displays the 10 next trains for a particular train station 
 To build this project of approximatly 10€
 --- Board ---
 Arduino UNO (clone)
-Price: ~ 5.00€
+*Price: ~ 5.00€
 
 ###### 4 Digit Display
 ![4digitsdisplay](http://img15.hostingpics.net/pics/468403sl300.jpg "4digitsdisplay")
 Add the librarie TM1637 included in this project
-Lib : https://github.com/avishorp/TM1637
-Price: ~ 1.00€
+*Lib : https://github.com/avishorp/TM1637
+*Price: ~ 1.00€
 
 ###### LCD 16 x 2
-![4digitsdisplay](http://img15.hostingpics.net/pics/961711lcdconnections.jpg "4digitsdisplay")
-Price: ~ 3.00€
+![lcd](http://img15.hostingpics.net/pics/961711lcdconnections.jpg "lcd")
+*Price: ~ 3.00€
 
 ###### LEDs (green & red)
-Price: ~ 0.10€
-Total approximate price : ~ 9.10€
+*Price: ~ 0.10€
+*Total approximate price : ~ 9.10€
 
 ### Slides
 [Polymer slides](http://joeybronner.fr/slides/arduino-d-shop-project.html)
@@ -30,7 +30,7 @@ Total approximate price : ~ 9.10€
 [Youtube prototype video](https://www.youtube.com/watch?v=HxguIKSnkjQ)
 
 ### Prototype
-...
+![proto](http://img15.hostingpics.net/pics/456282proto.png "proto")
 
 ### TODO
 ...
